@@ -34,4 +34,7 @@ class Student extends Person{
 		this.name = name;
 		this.major = major;
 	}
+	public Student() {
+		
+	}
 }

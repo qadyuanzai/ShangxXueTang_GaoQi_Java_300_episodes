@@ -12,7 +12,7 @@ public class TestStatic {
 	static int b;
 	
 	static void printa() {
-		System.out.println(a);//不能在静态方法里使用非静态成员
+		//System.out.println(a);//不能在静态方法里使用非静态成员
 		printb();//调用静态方法也没有问题
 	}
 	static void printb() {
