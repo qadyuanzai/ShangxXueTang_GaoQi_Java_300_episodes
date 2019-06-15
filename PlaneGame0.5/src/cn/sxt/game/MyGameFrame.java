@@ -1,6 +1,7 @@
 package cn.sxt.game;
 
 
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -8,14 +9,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JFrame;
 
 /**
  * 飞机游戏主窗口
  * @author 张思源
  *
  */
-public class MyGameFrame extends JFrame {
+public class MyGameFrame extends Frame {
 	
 	Image plane = GameUtil.getImage("images/plane.png")	;
 	Image bg = GameUtil.getImage("images/bg.jpg");
@@ -30,8 +30,13 @@ public class MyGameFrame extends JFrame {
 		g.drawImage(bg, 0, 0, null);
 		p.drawSelf(g);//画飞机
 		
+		//画炮弹
 		for(int i = 0; i < shells.length; i++) {
 			shells[i].draw(g);
+			boolean collision = shells[i].getRect().intersects(p.getRect());
+			if(collision) {
+				p.alive = false;
+			}
 		}
 	}
 	
@@ -93,5 +98,16 @@ public class MyGameFrame extends JFrame {
 	public static void main(String[] args) {
 		MyGameFrame f = new MyGameFrame();
 		f.launchFrame();
+	}
+	
+	private Image offScreenImage = null;
+	 
+	public void update(Graphics g) {
+	    if(offScreenImage == null)
+	        offScreenImage = this.createImage(Constant.GAME_WIDTH,Constant.GAME_HEIGHT);//这是游戏窗口的宽度和高度
+	     
+	    Graphics gOff = offScreenImage.getGraphics();
+	    paint(gOff);
+	    g.drawImage(offScreenImage, 0, 0, null);
 	}
 }
