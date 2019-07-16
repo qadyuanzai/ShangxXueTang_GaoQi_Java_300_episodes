@@ -30,9 +30,6 @@ public class MyGameFrame extends Frame {
 	public void paint(Graphics g) {
 		g.drawImage(bg, 0, 0, null);
 		p.drawSelf(g);//»­·É»ú
-		if(e!=null) {
-			e.draw(g);			
-		}
 		//»­ÅÚµ¯
 		for(int i = 0; i < shells.length; i++) {
 			shells[i].draw(g);
@@ -42,6 +39,7 @@ public class MyGameFrame extends Frame {
 				if(e==null) {
 					e = new Explode(p.x,p.y);
 				}
+				e.draw(g);			
 			}
 		}
 	}
