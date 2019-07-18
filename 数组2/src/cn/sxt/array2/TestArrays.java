@@ -9,8 +9,12 @@ import java.util.Arrays;
 
 public class TestArrays {
 	public static void main(String[] args) {
-		int[] a = {10, 20, 30};
-		
+		int[] a = {100, 20, 30, 50, 40, 80, 70};
+
 		System.out.println(Arrays.toString(a));
+		Arrays.sort(a);
+		System.out.println(Arrays.toString(a));
+		
+		System.out.println(Arrays.binarySearch(a, 100));
 	}
 }
