@@ -1,22 +1,27 @@
 package cn.cxt.mycollection;
 
 /**
- * 数组扩容
+ * 增加set和get方法
+ * 增加数组边界检查
  * @author qadyuanzai
  *
  */
-public class SxtArrayList03<E> {
+public class SxtArrayList04<E> {
 	private	 Object[] elementData;
 	private int size;
 	private static final int DEFALT_CAPACITY = 10;
 	
 	
-	public SxtArrayList03() {
+	public SxtArrayList04() {
 		elementData = new Object[DEFALT_CAPACITY];
 	}
 	
-	public SxtArrayList03(int capacity) {
-		elementData = new Object[capacity];
+	public SxtArrayList04(int capacity) {
+		if(capacity<=0) {
+			throw new RuntimeException("容器容量不能小于零");
+		}else {
+			elementData = new Object[capacity];			
+		}
 	}
 	
 	public void add(E e) {
@@ -31,6 +36,26 @@ public class SxtArrayList03<E> {
 		elementData[size++] = e;
 	}
 	
+	public E get(int index) {
+		checkRange(index);
+		return (E)elementData[index];
+	}
+	
+	public void set(E element, int index) {
+		//索引合法判断
+		checkRange(index);
+		elementData[index] = element;
+	}
+	
+	public void checkRange(int index) {
+		if(index<0||index>=size) {
+			//不合法时抛出错误
+			throw new RuntimeException("索引不合法:"+index);
+		}
+	}
+	
+	
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
@@ -42,7 +67,7 @@ public class SxtArrayList03<E> {
 	}
 	
 	public static void main(String[] args) {
-		SxtArrayList03<String> s1 = new SxtArrayList03<>(20);
+		SxtArrayList04<String> s1 = new SxtArrayList04<>(20);
 		s1.add("aa");
 		s1.add("bb");
 		s1.add("cc");
@@ -51,6 +76,7 @@ public class SxtArrayList03<E> {
 		}
 		
 		System.out.println(s1);
-		
+		s1.set("PPoih", 1);
+		System.out.println(s1.get(100));
 	}
 }
