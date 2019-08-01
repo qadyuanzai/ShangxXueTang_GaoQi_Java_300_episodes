@@ -12,7 +12,9 @@ import java.util.List;
 public class TestList {
 	public static void main(String[] args) {
 
-		test02();
+		//test02();
+		test03();
+		
 		
 		
 	}
@@ -56,6 +58,37 @@ public class TestList {
 		//list01.retainAll(list02);		//保留交集
 		
 		System.out.println("list01:"+list01);
+	}
+	
+	public static void test03() {
+		List<String> list = new ArrayList<String>();
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		list.add("D");
+		System.out.println(list);
+		
+		list.add(2, "Percy");
+		System.out.println(list);
+		
+		list.remove(2);
+		System.out.println(list);
+		
+		list.set(2, "Percy");
+		System.out.println(list);
+		
+		System.out.println(list.get(2));
+		
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		list.add("D");
+		//返回指定元素第一次出现的索引地址
+		System.out.println(list.indexOf("A"));
+		//返回指定元素倒序第一次出现地址
+		System.out.println(list.lastIndexOf("A"));
+		
+		
 	}
 	
 	
