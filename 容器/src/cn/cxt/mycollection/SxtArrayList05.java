@@ -40,6 +40,14 @@ public class SxtArrayList05<E> {
 		return (E)elementData[index];
 	}
 	
+	public int size() {
+		return size;
+	}
+	
+	public boolean isEmpty() {
+		return size == 0;
+	}
+	
 	public void set(E element, int index) {
 		//Ë÷ÒýºÏ·¨ÅÐ¶Ï
 		checkRange(index);
@@ -94,5 +102,6 @@ public class SxtArrayList05<E> {
 		
 		s1.remove("aa");
 		System.out.println(s1);
+		System.out.println(s1.isEmpty());
 	}
 }
