@@ -17,6 +17,21 @@ public class TestMap {
 		m1.put(3, "three");
 
 		System.out.println(m1.get(1));
+		System.out.println(m1.isEmpty());
+		System.out.println(m1.containsKey(2));
+		System.out.println(m1.containsValue("六"));
+		
+		Map<Integer, String> m2 = new HashMap<>();
+		m2.put(4, "四");
+		m2.put(5, "五");
+		
+		System.out.println(m1);
+		m1.putAll(m2);
+		System.out.println(m1);
+		
+		//map中键不能重复，如果重复，则新的覆盖旧的(根据equals方法判断)
+		m1.put(1, "一");
+		System.out.println(m1);
 		
 	}
 }
